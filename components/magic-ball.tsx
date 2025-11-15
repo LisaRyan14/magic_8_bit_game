@@ -11,8 +11,10 @@ export function MagicBall({ isShaking, answer, showAnswer }: MagicBallProps) {
     <div className={`relative transition-transform ${isShaking ? "animate-shake" : ""}`}>
       {/* 8-ball outer circle */}
       <div className="relative w-64 h-64 md:w-80 md:h-80">
-        {/* Main ball */}
-        <div className="absolute inset-0 rounded-full bg-white border-8 border-white shadow-2xl">
+        {/* Main ball with pool table shadow */}
+        <div className="absolute inset-0 rounded-full bg-white border-8 border-white shadow-2xl" style={{
+          boxShadow: '0 8px 16px rgba(0, 0, 0, 0.4), 0 0 0 2px rgba(0, 0, 0, 0.1), inset 0 2px 4px rgba(255, 255, 255, 0.3)'
+        }}>
           <div className="absolute inset-2 rounded-full bg-black" />
         </div>
 

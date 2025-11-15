@@ -60,25 +60,66 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen bg-black flex flex-col items-center justify-center p-4 relative overflow-hidden">
-      {/* Pixel art grid pattern background */}
-      <div
-        className="absolute inset-0 opacity-5"
+    <main className="min-h-screen flex flex-col items-center justify-center p-4 relative overflow-hidden" style={{ backgroundColor: '#8B4513' }}>
+      {/* Wooden rails - top */}
+      <div className="absolute top-0 left-0 right-0 h-16 md:h-20" style={{ 
+        background: 'linear-gradient(180deg, #6B4423 0%, #8B4513 50%, #A0522D 100%)',
+        borderBottom: '4px solid #654321'
+      }} />
+      
+      {/* Wooden rails - bottom */}
+      <div className="absolute bottom-0 left-0 right-0 h-16 md:h-20" style={{ 
+        background: 'linear-gradient(0deg, #6B4423 0%, #8B4513 50%, #A0522D 100%)',
+        borderTop: '4px solid #654321'
+      }} />
+      
+      {/* Wooden rails - left */}
+      <div className="absolute left-0 top-16 bottom-16 md:top-20 md:bottom-20 w-16 md:w-20" style={{ 
+        background: 'linear-gradient(90deg, #6B4423 0%, #8B4513 50%, #A0522D 100%)',
+        borderRight: '4px solid #654321'
+      }} />
+      
+      {/* Wooden rails - right */}
+      <div className="absolute right-0 top-16 bottom-16 md:top-20 md:bottom-20 w-16 md:w-20" style={{ 
+        background: 'linear-gradient(270deg, #6B4423 0%, #8B4513 50%, #A0522D 100%)',
+        borderLeft: '4px solid #654321'
+      }} />
+
+      {/* Pool table felt - main playing surface */}
+      <div 
+        className="absolute inset-16 md:inset-20"
         style={{
+          backgroundColor: '#0d4f3c',
           backgroundImage: `
-          linear-gradient(0deg, transparent 24%, white 25%, white 26%, transparent 27%, transparent 74%, white 75%, white 76%, transparent 77%, transparent),
-          linear-gradient(90deg, transparent 24%, white 25%, white 26%, transparent 27%, transparent 74%, white 75%, white 76%, transparent 77%, transparent)
-        `,
-          backgroundSize: "16px 16px",
+            radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
+            radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
+            repeating-linear-gradient(
+              0deg,
+              transparent,
+              transparent 2px,
+              rgba(0, 0, 0, 0.1) 2px,
+              rgba(0, 0, 0, 0.1) 4px
+            )
+          `,
         }}
       />
 
+      {/* Corner pockets */}
+      <div className="absolute top-12 left-12 w-8 h-8 md:top-16 md:left-16 md:w-12 md:h-12 rounded-full bg-black opacity-60" />
+      <div className="absolute top-12 right-12 w-8 h-8 md:top-16 md:right-16 md:w-12 md:h-12 rounded-full bg-black opacity-60" />
+      <div className="absolute bottom-12 left-12 w-8 h-8 md:bottom-16 md:left-16 md:w-12 md:h-12 rounded-full bg-black opacity-60" />
+      <div className="absolute bottom-12 right-12 w-8 h-8 md:bottom-16 md:right-16 md:w-12 md:h-12 rounded-full bg-black opacity-60" />
+      
+      {/* Side pockets */}
+      <div className="absolute top-1/2 left-12 -translate-y-1/2 w-8 h-8 md:left-16 md:w-12 md:h-12 rounded-full bg-black opacity-60" />
+      <div className="absolute top-1/2 right-12 -translate-y-1/2 w-8 h-8 md:right-16 md:w-12 md:h-12 rounded-full bg-black opacity-60" />
+
       <div className="relative z-10 flex flex-col items-center gap-8 w-full max-w-2xl">
         <div className="text-center space-y-4">
-          <h1 className="font-mono text-4xl md:text-6xl font-bold text-white tracking-wider pixel-text">
+          <h1 className="font-mono text-4xl md:text-6xl font-bold text-white tracking-wider pixel-text drop-shadow-lg" style={{ textShadow: '3px 3px 0px rgba(0, 0, 0, 0.5)' }}>
             MAGIC 8-BIT BALL
           </h1>
-          <p className="font-mono text-sm md:text-base text-white/80 tracking-wide">
+          <p className="font-mono text-sm md:text-base text-white/90 tracking-wide drop-shadow-md">
             {">"} ASK A YES/NO QUESTION {"<"}
           </p>
         </div>
@@ -87,7 +128,7 @@ export default function Home() {
 
         <QuestionInput question={question} setQuestion={setQuestion} onSubmit={handleSubmit} disabled={isShaking} />
 
-        <div className="font-mono text-xs text-white/60 text-center tracking-wider">
+        <div className="font-mono text-xs text-white/70 text-center tracking-wider drop-shadow-sm">
           PRESS [ENTER] OR CLICK [ASK] TO CONSULT THE 8-BALL
         </div>
       </div>

@@ -29,14 +29,32 @@ export function QuestionInput({ question, setQuestion, onSubmit, disabled }: Que
           onKeyPress={handleKeyPress}
           placeholder="ENTER YOUR QUESTION..."
           disabled={disabled}
-          className="w-full h-14 px-6 font-mono text-base md:text-lg bg-black border-4 border-white text-white placeholder:text-white/40 focus:outline-none focus:ring-4 focus:ring-white/50 disabled:opacity-50 tracking-wide"
+          className="w-full h-14 px-6 font-mono text-base md:text-lg bg-white/95 border-4 border-amber-900 text-amber-900 placeholder:text-amber-700/60 focus:outline-none focus:ring-4 focus:ring-amber-700/50 disabled:opacity-50 tracking-wide shadow-lg"
+          style={{ 
+            boxShadow: 'inset 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.2)'
+          }}
         />
       </div>
 
       <Button
         onClick={onSubmit}
         disabled={disabled || !question.trim()}
-        className="w-full h-14 font-mono text-lg md:text-xl font-bold bg-white text-black hover:bg-white/90 disabled:opacity-50 disabled:cursor-not-allowed border-4 border-white tracking-wider transition-all active:scale-95"
+        className="w-full h-14 font-mono text-lg md:text-xl font-bold text-white disabled:opacity-50 disabled:cursor-not-allowed border-4 tracking-wider transition-all active:scale-95 shadow-lg"
+        style={{
+          background: 'linear-gradient(135deg, #8B4513 0%, #A0522D 50%, #CD853F 100%)',
+          borderColor: '#654321',
+          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
+        }}
+        onMouseEnter={(e) => {
+          if (!disabled && question.trim()) {
+            e.currentTarget.style.background = 'linear-gradient(135deg, #A0522D 0%, #CD853F 50%, #DEB887 100%)'
+          }
+        }}
+        onMouseLeave={(e) => {
+          if (!disabled && question.trim()) {
+            e.currentTarget.style.background = 'linear-gradient(135deg, #8B4513 0%, #A0522D 50%, #CD853F 100%)'
+          }
+        }}
       >
         {disabled ? "[ SHAKING... ]" : "[ ASK THE 8-BALL ]"}
       </Button>
