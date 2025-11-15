@@ -59,6 +59,13 @@ export default function Home() {
     }, 1500)
   }
 
+  const handleClear = () => {
+    setQuestion("")
+    setAnswer("")
+    setShowAnswer(false)
+    setIsShaking(false)
+  }
+
   return (
     <main className="min-h-screen bg-black flex flex-col items-center justify-center p-4 relative overflow-hidden">
       {/* Pixel art grid pattern background */}
@@ -85,7 +92,7 @@ export default function Home() {
 
         <MagicBall isShaking={isShaking} answer={answer} showAnswer={showAnswer} />
 
-        <QuestionInput question={question} setQuestion={setQuestion} onSubmit={handleSubmit} disabled={isShaking} />
+        <QuestionInput question={question} setQuestion={setQuestion} onSubmit={handleSubmit} onClear={handleClear} disabled={isShaking} />
 
         <div className="font-mono text-xs text-white/60 text-center tracking-wider">
           PRESS [ENTER] OR CLICK [ASK] TO CONSULT THE 8-BALL
